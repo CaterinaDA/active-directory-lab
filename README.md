@@ -41,6 +41,22 @@ Creato il gruppo di sicurezza "Contabilita" (Global Security Group) e aggiunto M
 
 ![Utente aggiunto al gruppo](screenshots/05-utente-aggiunto-gruppo.png)
 
+### 6. Disabilitazione account
+
+Simulato l'offboarding di un dipendente: account disabilitato immediatamente su richiesta HR. L'icona con la freccia verso il basso indica visivamente l'account disabilitato in ADUC.
+
+![Account disabilitato](screenshots/06-account-disabilitato.png)
+
+### 7. Scenari pratici help desk
+
+Simulati scenari reali di supporto:
+
+- Nuovo assunto: creazione utente Giulia Bianchi, assegnazione al gruppo IT
+- Account bloccato: sblocco account e reset password per Marco Verdi
+- Password dimenticata: reset completo per Anna Ferrari con obbligo di cambio al primo accesso
+
+![Scenari pratici](screenshots/07-scenari-pratici.png)
+
 ## Competenze dimostrate
 
 - Installazione e configurazione di Windows Server 2022
@@ -48,4 +64,6 @@ Creato il gruppo di sicurezza "Contabilita" (Global Security Group) e aggiunto M
 - Gestione di Organizational Units (OU)
 - Creazione e gestione utenti in Active Directory
 - Reset password e sblocco account
+- Disabilitazione account per offboarding
 - Creazione gruppi di sicurezza e gestione membri
+- Gestione scenari reali di supporto help desk
