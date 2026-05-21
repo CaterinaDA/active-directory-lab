@@ -92,16 +92,58 @@ Utilizzo dei comandi di rete per diagnosticare problemi di connettività seguend
 
 ![ping e nslookup](screenshots/12-ping-nslookup.png)
 
+### 11. Group Policy Object (GPO)
+
+Creata e configurata la GPO "Blocco Schermo Marketing" applicata alla OU Marketing, con l'obiettivo di ridurre il rischio di accessi non autorizzati su postazioni incustodite.
+
+**OU di destinazione:** `lab.local/Dipendenti/Marketing`
+
+**Impostazioni configurate** (User Configuration > Policies > Administrative Templates > Control Panel > Personalization):
+
+| Policy                            | Setting | Valore                 |
+| --------------------------------- | ------- | ---------------------- |
+| Screen saver timeout              | Enabled | 300 secondi (5 minuti) |
+| Password protect the screen saver | Enabled | —                      |
+
+![GPO collegata alla OU Marketing](screenshots/13-gpo-marketing.png)
+
+![GPO Settings - impostazioni configurate](screenshots/14-gpo-settings.png)
+
+### 12. Verifica GPO tramite RDP
+
+Verificata l'applicazione della GPO accedendo alla VM come utente del reparto Marketing tramite Remote Desktop Protocol (RDP), simulando un accesso remoto reale.
+
+**Procedura di verifica:**
+
+1. Configurata scheda di rete Host-Only su VirtualBox per rendere la VM raggiungibile dall'host
+2. Abilitato RDP sulla VM tramite Server Manager
+3. Aggiunto l'utente Marketing al gruppo Remote Desktop Users e concesso il permesso "Allow log on through Remote Desktop Services" in Local Security Policy
+4. Connessione RDP dall'host Windows 11 alla VM (`192.168.56.101`) con le credenziali dell'utente Marketing
+5. Eseguito `gpupdate /force` per forzare l'aggiornamento delle policy
+6. Verificato con `gpresult /r` che la GPO "Blocco Schermo Marketing" risultasse nella lista delle policy applicate
+7. Confermato che le impostazioni screensaver fossero bloccate (campo non modificabile dall'utente)
+
+![gpupdate /force completato](screenshots/15-gpupdate-force.png)
+
+![gpresult /r - GPO applicata](screenshots/16-gpresult.png)
+
+![Screensaver bloccato a 5 minuti](screenshots/17-screensaver-blocked.png)
+
 ## Competenze dimostrate
 
 - Installazione e configurazione di Windows Server 2022
 - Promozione del server a Domain Controller
-- Gestione di Organizational Units (OU)
+- Gestione di Organizational Units (OU) con struttura per reparto
 - Creazione e gestione utenti in Active Directory
 - Reset password e sblocco account
 - Disabilitazione account per offboarding
 - Creazione gruppi di sicurezza e gestione membri
+- Organizzazione Security Group per OU di reparto
 - Gestione scenari reali di supporto help desk
 - Monitoraggio processi e performance con Task Manager
 - Analisi log di sicurezza con Event Viewer
 - Troubleshooting di rete con ipconfig, ping e nslookup
+- Creazione e configurazione Group Policy Object (GPO)
+- Applicazione di policy di sicurezza a Organizational Unit specifiche
+- Verifica GPO tramite gpupdate /force e gpresult /r
+- Configurazione e utilizzo di Remote Desktop Protocol (RDP)
