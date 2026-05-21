@@ -57,6 +57,41 @@ Simulati scenari reali di supporto:
 
 ![Scenari pratici](screenshots/07-scenari-pratici.png)
 
+### 8. Troubleshooting con Task Manager
+
+Utilizzo del Task Manager per identificare processi che consumano CPU e RAM eccessiva. Tab Performance per monitoraggio in tempo reale, tab Processes per identificare il processo problematico.
+
+![Task Manager Performance](screenshots/08-task-manager-performance.png)
+
+![Task Manager Processi](screenshots/09-task-manager-processi.png)
+
+### 9. Analisi log con Event Viewer
+
+Utilizzo dell'Event Viewer per analizzare il log Security. Filtrato per Event ID 4625 (login falliti) per identificare tentativi di accesso non autorizzati.
+
+| Event ID | Significato      |
+| -------- | ---------------- |
+| 4624     | Login riuscito   |
+| 4625     | Login fallito    |
+| 4634     | Logoff           |
+| 4740     | Account bloccato |
+
+![Event Viewer Log 4625](screenshots/10-event-viewer-4625.png)
+
+### 10. Troubleshooting di rete
+
+Utilizzo dei comandi di rete per diagnosticare problemi di connettività seguendo un approccio a strati:
+
+- `ipconfig /all` — verifica configurazione IP, DHCP e DNS
+- `ping gateway` — verifica rete locale
+- `ping 8.8.8.8` — verifica connettività internet
+- `ping google.com` — verifica risoluzione DNS
+- `nslookup` — diagnostica specifica del DNS
+
+![ipconfig e ping](screenshots/11-ipconfig-all.png)
+
+![ping e nslookup](screenshots/12-ping-nslookup.png)
+
 ## Competenze dimostrate
 
 - Installazione e configurazione di Windows Server 2022
@@ -67,3 +102,6 @@ Simulati scenari reali di supporto:
 - Disabilitazione account per offboarding
 - Creazione gruppi di sicurezza e gestione membri
 - Gestione scenari reali di supporto help desk
+- Monitoraggio processi e performance con Task Manager
+- Analisi log di sicurezza con Event Viewer
+- Troubleshooting di rete con ipconfig, ping e nslookup
