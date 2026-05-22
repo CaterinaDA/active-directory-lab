@@ -129,6 +129,27 @@ Verificata l'applicazione della GPO accedendo alla VM come utente del reparto Ma
 
 ![Screensaver bloccato a 5 minuti](screenshots/17-screensaver-blocked.png)
 
+### 13. Troubleshooting DHCP con ipconfig /release e /renew
+
+Simulato lo scenario di un utente che non riesce a connettersi alla rete a causa di un indirizzo APIPA (169.254.x.x), sintomo che il client non ha ricevuto un IP dal server DHCP.
+
+**Comandi utilizzati:**
+
+- `ipconfig /release` — rilascia l'indirizzo IP corrente e disconnette il client dal DHCP
+- `ipconfig /renew` — richiede un nuovo indirizzo IP al server DHCP
+- `ipconfig` — verifica che l'IP assegnato sia tornato normale
+
+**Procedura:**
+
+1. Verificato con `ipconfig` la presenza di un indirizzo APIPA (169.254.x.x) — conferma che il DHCP non ha risposto
+2. Eseguito `ipconfig /release` per rilasciare l'IP corrente
+3. Eseguito `ipconfig /renew` per richiedere un nuovo IP al DHCP
+4. Confermato con `ipconfig` che la scheda di rete ha ricevuto un IP valido
+
+**Nota:** se dopo `/renew` l'indirizzo rimane APIPA, il problema è nel server DHCP o nell'infrastruttura di rete — necessaria escalation a L2.
+
+![ipconfig /release e /renew](screenshots/18-ipconfig-release-renew.png)
+
 ## Competenze dimostrate
 
 - Installazione e configurazione di Windows Server 2022
@@ -147,3 +168,4 @@ Verificata l'applicazione della GPO accedendo alla VM come utente del reparto Ma
 - Applicazione di policy di sicurezza a Organizational Unit specifiche
 - Verifica GPO tramite gpupdate /force e gpresult /r
 - Configurazione e utilizzo di Remote Desktop Protocol (RDP)
+- Troubleshooting DHCP con ipconfig /release e /renew
