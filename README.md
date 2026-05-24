@@ -150,6 +150,29 @@ Simulato lo scenario di un utente che non riesce a connettersi alla rete a causa
 
 ![ipconfig /release e /renew](screenshots/18-ipconfig-release-renew.png)
 
+### 14. Cartelle condivise e permessi NTFS
+
+Creata e configurata una cartella condivisa `Documenti_Contabilita` accessibile solo agli utenti del gruppo Contabilita, simulando una condivisione aziendale reale con permessi granulari.
+
+**Percorso cartella:** `C:\Documenti_Contabilita`
+
+**Due livelli di permessi configurati:**
+
+| Livello           | Strumento        | Gruppo      | Permesso |
+| ----------------- | ---------------- | ----------- | -------- |
+| Share Permissions | Advanced Sharing | Contabilita | Change   |
+| NTFS Permissions  | Security tab     | Contabilita | Modify   |
+
+**Regola importante:** quando un utente accede a una cartella condivisa, Windows applica il permesso più restrittivo tra Share e NTFS. Entrambi i livelli devono essere configurati correttamente.
+
+**Verifica con `net share`:** comando utilizzato per confermare che la cartella risultasse correttamente condivisa sul server.
+
+![Cartella condivisa - tab Sharing](screenshots/19-cartella-condivisa.png)
+
+![Permessi NTFS - tab Security](screenshots/20-permessi-ntfs.png)
+
+![net share - verifica condivisione](screenshots/21-net-share.png)
+
 ## Competenze dimostrate
 
 - Installazione e configurazione di Windows Server 2022
@@ -169,3 +192,5 @@ Simulato lo scenario di un utente che non riesce a connettersi alla rete a causa
 - Verifica GPO tramite gpupdate /force e gpresult /r
 - Configurazione e utilizzo di Remote Desktop Protocol (RDP)
 - Troubleshooting DHCP con ipconfig /release e /renew
+- Creazione cartelle condivise con Advanced Sharing
+- Configurazione permessi NTFS per gruppi di sicurezza
